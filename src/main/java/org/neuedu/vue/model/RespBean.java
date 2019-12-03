@@ -11,11 +11,11 @@ public class RespBean {
     public static RespBean ok(String msg,Object object){
         return new RespBean(200,msg,object);
     }
-    public static RespBean error(Integer status,String msg){
-        return new RespBean(status,msg,null);
+    public static RespBean error(String msg){
+        return new RespBean(500,msg,null);
     }
-    public static RespBean error(Integer status,String msg,Object object){
-        return new RespBean(status,msg,object);
+    public static RespBean error(String msg,Object object){
+        return new RespBean(500,msg,object);
     }
 
     private RespBean() {

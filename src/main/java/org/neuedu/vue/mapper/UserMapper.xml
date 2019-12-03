@@ -14,4 +14,21 @@
         from `role`
         where id in (select rid from `user_role` where uid = #{id})
     </select>
+
+    <select id="getUsers" resultType="org.neuedu.vue.model.Proper">
+        select *
+        from `user`
+    </select>
+
+    <update id="upUser">
+        update user
+        set enabled = #{enabled}
+        where id = #{id}
+    </update>
+
+    <delete id="delUser">
+        delete
+        from `user`
+        where id = #{id}
+    </delete>
 </mapper>

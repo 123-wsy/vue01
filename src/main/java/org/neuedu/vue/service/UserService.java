@@ -1,6 +1,8 @@
 package org.neuedu.vue.service;
 
 import org.neuedu.vue.mapper.UserMapper;
+import org.neuedu.vue.model.Proper;
+import org.neuedu.vue.model.RespBean;
 import org.neuedu.vue.model.Role;
 import org.neuedu.vue.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +26,27 @@ public class UserService implements UserDetailsService {
         List<Role> roles = userMapper.getRoles(user.getId());
         user.setRoles(roles);
         return user;
+    }
+
+    public List<Proper> getUsers() {
+        return userMapper.getUsers();
+    }
+
+    public RespBean upUser(Proper proper) {
+        Integer i = userMapper.upUser(proper);
+        if(i == 0){
+            return RespBean.error("修改失败");
+        }else{
+            return RespBean.error("修改成功");
+        }
+    }
+
+    public RespBean delUser(Integer id) {
+        Integer i = userMapper.delUser(id);
+        if(i == 0){
+            return RespBean.error("删除失败");
+        }else{
+            return RespBean.error("删除成功");
+        }
     }
 }

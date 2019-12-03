@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoginController {
     @GetMapping("/login")
     public RespBean login(){
-        return RespBean.error(401, "先登录,崽种");
+        return RespBean.error("先登录,崽种");
     }
 }

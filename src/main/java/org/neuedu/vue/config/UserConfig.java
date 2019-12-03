@@ -1,6 +1,5 @@
 package org.neuedu.vue.config;
 
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.neuedu.vue.model.RespBean;
 import org.neuedu.vue.model.User;
@@ -69,17 +68,17 @@ public class UserConfig extends WebSecurityConfigurerAdapter {
                         resp.setContentType("application/json;charset=utf-8");
                         RespBean error = null;
                         if (e instanceof BadCredentialsException) {
-                            error = RespBean.error(500, "用户名或密码错误，请重新登录");
+                            error = RespBean.error("用户名或密码错误，请重新登录");
                         }else if(e instanceof LockedException){
-                            error = RespBean.error(500, "账户被锁定，请联系管理员");
+                            error = RespBean.error("账户被锁定，请联系管理员");
                         }else if(e instanceof AccountExpiredException){
-                            error = RespBean.error(500, "账户已过期，请联系管理员");
+                            error = RespBean.error("账户已过期，请联系管理员");
                         }else if(e instanceof CredentialsExpiredException){
-                            error = RespBean.error(500, "账户密码过期，请联系管理员");
+                            error = RespBean.error("账户密码过期，请联系管理员");
                         }else if(e instanceof DisabledException){
-                            error = RespBean.error(500, "账户被禁用，请联系管理员");
+                            error = RespBean.error("账户被禁用，请联系管理员");
                         }else{
-                            error = RespBean.error(500, "未知错误");
+                            error = RespBean.error("未知错误");
                         }
                         PrintWriter writer = resp.getWriter();
                         writer.print(new ObjectMapper().writeValueAsString(error));
