@@ -3,8 +3,9 @@ package org.neuedu.vue.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
+import java.util.List;
 
-public class Proper {
+public class UserBean {
     private Integer id;
     private String username;
     private String password;
@@ -14,6 +15,7 @@ public class Proper {
     private Date regtime;
     private Boolean enabled;
     private Boolean locked;
+    private List<Role> roles;
 
     public Integer getId() {
         return id;
@@ -79,9 +81,17 @@ public class Proper {
         this.locked = locked;
     }
 
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
+
     @Override
     public String toString() {
-        return "Proper{" +
+        return "UserBean{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
@@ -90,6 +100,7 @@ public class Proper {
                 ", regtime=" + regtime +
                 ", enabled=" + enabled +
                 ", locked=" + locked +
+                ", roles=" + roles +
                 '}';
     }
 }

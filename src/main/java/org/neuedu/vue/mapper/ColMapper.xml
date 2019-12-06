@@ -33,4 +33,12 @@
             #{id}
         </foreach>
     </delete>
+
+    <select id="getDates" resultType="org.neuedu.vue.model.Column">
+        select colname,count(*) count
+        from `column` c
+        join `article` a
+        on a.cid = c.id
+        group by colname
+    </select>
 </mapper>

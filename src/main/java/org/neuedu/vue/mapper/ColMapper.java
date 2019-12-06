@@ -15,4 +15,6 @@ public interface ColMapper {
     Integer upColumn(Column column);
 
     Integer delManyColumn(@Param("ids") Integer[] ids);
+
+    List<Column> getDates();
 }

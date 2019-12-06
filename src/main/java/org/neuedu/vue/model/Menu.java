@@ -31,4 +31,13 @@ public class Menu {
     public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
+
+    @Override
+    public String toString() {
+        return "Menu{" +
+                "id=" + id +
+                ", pattern='" + pattern + '\'' +
+                ", roles=" + roles +
+                '}';
+    }
 }

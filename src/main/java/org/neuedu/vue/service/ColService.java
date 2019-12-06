@@ -51,4 +51,8 @@ public class ColService {
             return RespBean.ok("删除成功");
         }
     }
+
+    public List<Column> getDates(){
+        return colMapper.getDates();
+    }
 }

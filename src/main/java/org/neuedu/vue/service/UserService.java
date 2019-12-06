@@ -1,7 +1,6 @@
 package org.neuedu.vue.service;
 
 import org.neuedu.vue.mapper.UserMapper;
-import org.neuedu.vue.model.Proper;
 import org.neuedu.vue.model.RespBean;
 import org.neuedu.vue.model.Role;
 import org.neuedu.vue.model.User;
@@ -28,16 +27,21 @@ public class UserService implements UserDetailsService {
         return user;
     }
 
-    public List<Proper> getUsers() {
-        return userMapper.getUsers();
+    public List<User> getUsers(String nickname) {
+        List<User> users = userMapper.getUsers(nickname);
+        for (User user : users) {
+            List<Role> roles = userMapper.getRoles(user.getId());
+            user.setRoles(roles);
+        }
+        return users;
     }
 
-    public RespBean upUser(Proper proper) {
-        Integer i = userMapper.upUser(proper);
+    public RespBean upUser(User user) {
+        Integer i = userMapper.upUser(user);
         if(i == 0){
             return RespBean.error("修改失败");
         }else{
-            return RespBean.error("修改成功");
+            return RespBean.ok("修改成功");
         }
     }
 
@@ -46,7 +50,7 @@ public class UserService implements UserDetailsService {
         if(i == 0){
             return RespBean.error("删除失败");
         }else{
-            return RespBean.error("删除成功");
+            return RespBean.ok("删除成功");
         }
     }
 }

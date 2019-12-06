@@ -1,6 +1,5 @@
 package org.neuedu.vue.controller.user;
 
-import org.neuedu.vue.model.Proper;
 import org.neuedu.vue.model.RespBean;
 import org.neuedu.vue.model.User;
 import org.neuedu.vue.service.UserService;
@@ -15,8 +14,9 @@ public class UserController {
     @Autowired
     UserService userService;
     @GetMapping("/getUsers")
-    public List<Proper> getUsers(){
-        return userService.getUsers();
+    public List<User> getUsers(@RequestParam(value = "nickname",defaultValue = "") String nickname){
+        System.out.println(nickname);
+        return userService.getUsers(nickname);
     }
 
     @DeleteMapping("/{id}")
@@ -24,9 +24,9 @@ public class UserController {
         return userService.delUser(id);
     }
 
-
     @PutMapping("/")
-    public RespBean upUser(@RequestBody Proper proper){
-        return userService.upUser(proper);
+    public RespBean upUser(@RequestBody User user){
+        return userService.upUser(user);
     }
+
 }

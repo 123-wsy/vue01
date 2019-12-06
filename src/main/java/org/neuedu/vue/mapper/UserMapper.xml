@@ -15,9 +15,14 @@
         where id in (select rid from `user_role` where uid = #{id})
     </select>
 
-    <select id="getUsers" resultType="org.neuedu.vue.model.Proper">
+    <select id="getUsers" resultType="org.neuedu.vue.model.User">
         select *
         from `user`
+        <where>
+            <if test="nickname != null">
+                nickname like concat('%',#{nickname},'%')
+            </if>
+        </where>
     </select>
 
     <update id="upUser">

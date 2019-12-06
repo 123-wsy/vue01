@@ -14,9 +14,27 @@ public class Art {
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
     private Date publishtime;
     private Integer status;
-    private User user;
+    private UserBean user;
     private Column column;
+    @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")
+    private Date updatetime;
+    private Integer views;
 
+    public Date getUpdatetime() {
+        return updatetime;
+    }
+
+    public void setUpdatetime(Date updatetime) {
+        this.updatetime = updatetime;
+    }
+
+    public Integer getViews() {
+        return views;
+    }
+
+    public void setViews(Integer views) {
+        this.views = views;
+    }
 
 //    public void setNickName(String nickName){
 //        user.setNickName(nickName);
@@ -98,11 +116,11 @@ public class Art {
         this.status = status;
     }
 
-    public User getUser() {
+    public UserBean getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserBean user) {
         this.user = user;
     }
 
@@ -127,6 +145,8 @@ public class Art {
                 ", status=" + status +
                 ", user=" + user +
                 ", column=" + column +
+                ", updatetime=" + updatetime +
+                ", views=" + views +
                 '}';
     }
 }

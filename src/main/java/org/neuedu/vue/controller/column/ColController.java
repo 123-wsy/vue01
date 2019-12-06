@@ -37,4 +37,9 @@ public class ColController {
     public RespBean delManyColumn(Integer[] ids){
         return colService.delManyColumn(ids);
     }
+
+    @GetMapping("/getDatas")
+    public List<Column> getDatas(){
+        return colService.getDates();
+    }
 }
