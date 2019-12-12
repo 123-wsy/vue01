@@ -1,8 +1,9 @@
 package org.neuedu.vue.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Menu {
+public class Menu implements Serializable {
     private Integer id;
     private String pattern;
     // 访问路径需要哪些角色

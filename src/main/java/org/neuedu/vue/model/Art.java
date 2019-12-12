@@ -2,9 +2,10 @@ package org.neuedu.vue.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Art {
+public class Art implements Serializable {
     private Integer id;
     private String title;
     private Integer uid;

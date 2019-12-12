@@ -2,10 +2,11 @@ package org.neuedu.vue.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-public class UserBean {
+public class UserBean implements Serializable {
     private Integer id;
     private String username;
     private String password;

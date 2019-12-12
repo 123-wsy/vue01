@@ -2,9 +2,10 @@ package org.neuedu.vue.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Column {
+public class Column implements Serializable {
     private Integer id;
     private String colname;
     @JsonFormat(pattern = "yyyy-MM-dd",timezone = "Asia/Shanghai")

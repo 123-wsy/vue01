@@ -1,6 +1,8 @@
 package org.neuedu.vue.model;
 
-public class PageBean {
+import java.io.Serializable;
+
+public class PageBean implements Serializable {
     private Integer status;
     private String key;
     private Integer pageNum;

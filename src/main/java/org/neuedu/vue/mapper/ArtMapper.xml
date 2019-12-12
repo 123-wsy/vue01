@@ -35,4 +35,57 @@
             </if>
         </where>
     </select>
+
+    <delete id="delArts">
+        delete
+        from `article`
+        <where>
+            id in
+            <foreach collection="ids" item="id" open="(" close=")" separator=",">
+                #{id}
+            </foreach>
+        </where>
+    </delete>
+
+    <insert id="addArt">
+        insert into `article`(title,uid,cid,status,htmlcontent,mdcontent)
+        values(#{title},#{uid},#{cid},#{status},#{htmlcontent},#{mdcontent})
+    </insert>
+
+    <resultMap id="getArtByAid" type="org.neuedu.vue.model.Art" autoMapping="true">
+        <association property="user" javaType="org.neuedu.vue.model.UserBean">
+            <result column="nickname" property="nickname"></result>
+        </association>
+    </resultMap>
+    <select id="getArtByAid" resultMap="getArtByAid">
+        select a.id,title,cid,mdcontent,nickname,views,updatetime,htmlcontent
+        from `article` a
+        join `user` u
+        on a.uid=u.id
+        where a.id = #{aid}
+    </select>
+
+    <update id="upArt">
+        update `article`
+        set title = #{title} ,htmlcontent=#{htmlcontent},mdcontent = #{mdcontent}
+        where id = #{id}
+    </update>
+
+    <delete id="delArtByAid">
+        delete
+        from `article`
+        where id = #{aid}
+    </delete>
+
+    <update id="upArtStatus">
+        update `article`
+        set status = 3
+        where id = #{aid}
+    </update>
+
+    <update id="upArtView">
+        update `article`
+        set views = views + 1
+        where id = #{aid}
+    </update>
 </mapper>

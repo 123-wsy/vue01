@@ -16,8 +16,12 @@ import java.util.List;
 
 @SpringBootTest
 class VueApplicationTests {
+    @Autowired
+    ArtMapper artMapper;
     @Test
     void contextLoads() {
+        Integer integer = artMapper.upArtStatus(2);
+        System.out.println(integer);
     }
 
 }
